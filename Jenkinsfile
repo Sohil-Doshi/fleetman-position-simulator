@@ -7,7 +7,7 @@ pipeline {
         AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
         AWS_ECR_REPO_NAME = credentials('ECR_REPO_POSITION_SIMULATOR')
         AWS_DEFAULT_REGION = 'us-east-1'
-        ORGANIZATION_NAME = "fleetman-k8s-ci"
+        ORGANIZATION_NAME = "Sohil-Doshi"
         SERVICE_NAME = "fleetman-position-simulator"
             
         REPOSITORY_TAG = "${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
@@ -99,13 +99,13 @@ pipeline {
         stage('Update Deployment file') {
             environment {
                 GIT_REPO_NAME = "fleetman-position-simulator"
-                GIT_ORG_NAME = "fleetman-k8s-ci"
+                GIT_ORG_NAME = "Sohil-Doshi"
             }
             steps {
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-                        git config user.email "deepaktyagi048@gmail.com"
-                        git config user.name "deeepak-tyagii"
+                        git config user.email "sohildoshi344@gmail.com"
+                        git config user.name "sohil-doshi"
                         BUILD_NUMBER=${BUILD_NUMBER}
                         echo $BUILD_NUMBER
                         imageTag=$(grep -oP '(?<=fleetman-position-simulator:)[^ ]+' deploy.yaml)
